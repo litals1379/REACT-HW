@@ -13,6 +13,17 @@ export default class CCColors extends Component {
   };
 
   render() {
+    const colors = [
+      'red',
+      'blue',
+      'green',
+      'yellow',
+      'pink',
+      'orange',
+      'purple',
+      'lightblue',
+    ];
+
     return (
       <div
         style={{
@@ -32,54 +43,23 @@ export default class CCColors extends Component {
             padding: '10px',
           }}
         >
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('red')}
-          >
-            Red
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('blue')}
-          >
-            Blue
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('green')}
-          >
-            Green
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('yellow')}
-          >
-            Yellow
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('pink')}
-          >
-            Pink
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('orange')}
-          >
-            Orange
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('purple')}
-          >
-            Purple
-          </button>
-          <button
-            className="btn btn-success"
-            onClick={() => this.changeBackgroundColor('lightblue')}
-          >
-            Light Blue
-          </button>
+          {colors.map((color) => (
+            <button
+              key={color}
+              className="btn"
+              style={{
+                backgroundColor: color,
+                color: 'white',
+                border: 'none',
+                padding: '10px 20px',
+                cursor: 'pointer',
+                borderRadius: '5px',
+              }}
+              onClick={() => this.changeBackgroundColor(color)}
+            >
+              {color.charAt(0).toUpperCase() + color.slice(1)}
+            </button>
+          ))}
         </div>
       </div>
     );
