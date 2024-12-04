@@ -23,57 +23,64 @@ export default class CCColors extends Component {
           backgroundColor: this.state.bgColor,
         }}
       >
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('red')}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '10px',
+            justifyContent: 'center',
+            padding: '10px',
+          }}
         >
-          Red
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('blue')}
-        >
-          Blue
-        </button>
-        <br />
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('green')}
-        >
-          Green
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('yellow')}
-        >
-          Yellow
-        </button>
-        <br />
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('pink')}
-        >
-          Pink
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('orange')}
-        >
-          Orange
-        </button>
-        <br />
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('purple')}
-        >
-          Purple
-        </button>
-        <button
-          className="btn btn-success"
-          onClick={() => this.changeBackgroundColor('lightblue')}
-        >
-          Light Blue
-        </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('red')}
+          >
+            Red
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('blue')}
+          >
+            Blue
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('green')}
+          >
+            Green
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('yellow')}
+          >
+            Yellow
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('pink')}
+          >
+            Pink
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('orange')}
+          >
+            Orange
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('purple')}
+          >
+            Purple
+          </button>
+          <button
+            className="btn btn-success"
+            onClick={() => this.changeBackgroundColor('lightblue')}
+          >
+            Light Blue
+          </button>
+        </div>
       </div>
     );
   }

@@ -9,6 +9,7 @@ export default class CCForm extends Component {
       grade: '',
       firstNameError: '',
       lastNameError: '',
+      gradeError: '',
       gradeMessage: '',
     };
   }
@@ -40,7 +41,11 @@ export default class CCForm extends Component {
         message = 'עליך לנסות שוב בשנה הבאה.';
       }
     }
-    this.setState({ grade: value, gradeMessage: message });
+    this.setState({
+         grade: value,
+         lastNameError: value === '' ? ' עליך למלא את ציון הפסיכומטרי' : '',
+         gradeMessage: message
+    });  
   };
 
   render() {
@@ -70,6 +75,7 @@ export default class CCForm extends Component {
         />
         <br />
         <p>{this.state.gradeMessage}</p>
+        <p style={{ color: 'red' }}>{this.state.gradeError}</p>
         ציון פסיכומטרי:
         <input
           type="text"
