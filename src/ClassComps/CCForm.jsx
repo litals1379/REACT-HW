@@ -43,7 +43,7 @@ export default class CCForm extends Component {
     }
     this.setState({
          grade: value,
-         lastNameError: value === '' ? ' עליך למלא את ציון הפסיכומטרי' : '',
+         gradeError: value === '' ? ' עליך למלא את ציון הפסיכומטרי' : '',
          gradeMessage: message
     });  
   };
