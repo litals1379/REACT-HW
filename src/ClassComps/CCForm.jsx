@@ -52,6 +52,8 @@ export default class CCForm extends Component {
     return (
       <div
         style={{
+          direction: 'rtl',
+          textAlign: 'right',  
           border: 'solid green 2px',
           margin: 5,
           padding: 5,
