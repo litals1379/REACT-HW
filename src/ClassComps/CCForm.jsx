@@ -4,112 +4,64 @@ export default class CCForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
-      grade: '',
-      firstNameError: 'עליך למלא שם פרטי',
-      lastNameError: 'עליך למלא שם משפחה',
-      gradeError: 'עליך למלא את ציון הפסיכומטרי',
-      gradeMessage: '',
-      showFirstNameError: false,
-      showLastNameError: false,
-      showGradeError: false,
-    };
+      fNameCommand: "",
+      lNameCommand: "",
+      gradeCommand: "",
+
+      gradeMessage: ""
+
+    }
   }
 
-  handleFirstNameChange = (e) => {
-    const value = e.target.value;
-    this.setState({
-      firstName: value,
-      firstNameError: value === '' ? 'עליך למלא שם פרטי' : '',
-    });
-  };
+  fNameFocused = (e) => {
+    e.target.value = ""
+    this.setState({ fNameCommand: "Enter your first name please!!" })
+  }
+  lNameFocused = (e) => {
+    e.target.value = ""
+    this.setState({ lNameCommand: "Enter your last name please!!" })
 
-  handleLastNameChange = (e) => {
-    const value = e.target.value;
-    this.setState({
-      lastName: value,
-      lastNameError: value === '' ? 'עליך למלא שם משפחה' : '',
-    });
-  };
+  }
+  gradeFocused = (e) => {
+    e.target.value = ""
+    this.setState({ gradeCommand: "Enter your grade please!!", gradeMessage: "" })
 
-  handleGradeChange = (e) => {
-    const value = e.target.value;
-    let message = '';
-    if (value !== '' && !isNaN(value)) {
-      const grade = parseInt(value, 10);
-      if (grade >= 555) {
-        message = 'התקבלת ללימודים!';
-      } else {
-        message = 'עליך לנסות שוב בשנה הבאה:(';
-      }
-    }
-    this.setState({
-      grade: value,
-      gradeError: value === '' ? 'עליך למלא את ציון הפסיכומטרי' : '',
-      gradeMessage: message,
-    });
-  };
+  }
 
-  handleFocus = (field) => {
-    this.setState({ [field]: true });
-  };
+  onBlured = () => {
+    this.setState({ fNameCommand: "", lNameCommand: "" })
+  }
 
-  handleBlur = (field) => {
-    this.setState({ [field]: false });
-  };
+  gradeOnBlured = (e) => {
+    if (Number(e.target.value) > 555)
+      this.setState({ gradeCommand: "", gradeMessage: "You were accepted to study!!!!" })
+    else
+      this.setState({ gradeCommand: "", gradeMessage: "Try again next year" })
+  }
+
 
   render() {
     return (
-      <div
-        style={{
-          direction: 'rtl',
-          textAlign: 'right',
-          border: 'solid green 2px',
-          margin: 5,
-          padding: 5,
-          borderRadius: 10,
-        }}
-      >
-        {this.state.showFirstNameError && this.state.firstNameError && (
-          <p style={{ color: 'red' }}>{this.state.firstNameError}</p>
-        )}
-        שם פרטי:
-        <input
-          type="text"
-          value={this.state.firstName}
-          onFocus={() => this.handleFocus('showFirstNameError')}
-          onBlur={() => this.handleBlur('showFirstNameError')}
-          onChange={this.handleFirstNameChange}
-        />
-        <br />
-        <br />
-        {this.state.showLastNameError && this.state.lastNameError && (
-          <p style={{ color: 'red' }}>{this.state.lastNameError}</p>
-        )}
-        שם משפחה:
-        <input
-          type="text"
-          value={this.state.lastName}
-          onFocus={() => this.handleFocus('showLastNameError')}
-          onBlur={() => this.handleBlur('showLastNameError')}
-          onChange={this.handleLastNameChange}
-        />
-        <br />
-        <br />
-        {this.state.showGradeError && this.state.gradeError && (
-          <p style={{ color: 'red' }}>{this.state.gradeError}</p>
-        )}
-        ציון פסיכומטרי:
-        <input
-          type="text"
-          value={this.state.grade}
-          onFocus={() => this.handleFocus('showGradeError')}
-          onBlur={() => this.handleBlur('showGradeError')}
-          onChange={this.handleGradeChange}
-        />
-        <p>{this.state.gradeMessage}</p>
+      <div>
+        <h1>CCForm</h1>
+        <form>
+          <p style={{ color: "red" }}>{this.state.fNameCommand}</p>
+          <label htmlFor="fName">First Name:</label>
+          <input type="text" onFocus={this.fNameFocused} onBlur={this.onBlured} name='fName' />
+          <br />
+          <br />
+          <p style={{ color: "red" }}>{this.state.lNameCommand}</p>
+          <label htmlFor="lName">Last Name</label>
+          <input type="text" onFocus={this.lNameFocused} onBlur={this.onBlured} name='lName' />
+          <br />
+          <br />
+          <p style={{ color: "red" }}>{this.state.gradeCommand}</p>
+
+          <label htmlFor="garde">Grade:</label>
+          <input type="number" onFocus={this.gradeFocused} onBlur={this.gradeOnBlured} name='grade' />
+          <p style={{ color: "red" }}>{this.state.gradeMessage}</p>
+        </form>
       </div>
-    );
+    )
   }
 }
